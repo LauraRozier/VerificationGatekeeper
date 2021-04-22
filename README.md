@@ -1,4 +1,4 @@
-*Verification Gatekeeper* Prevents players from doing anything on the server until they are member of a specific group.
+*Verification Gatekeeper* Prevents players from doing anything on the server until they are given the bypass permission.
 
 This plugin was written after a suggestion by [TFNBlackMarket](https://umod.org/user/TFNBlackMarket)
 

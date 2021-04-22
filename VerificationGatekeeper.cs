@@ -33,7 +33,7 @@ using Oxide.Core.Libraries.Covalence;
 namespace Oxide.Plugins
 {
     [Info("Verification Gatekeeper", "ThibmoRozier", "1.0.2")]
-    [Description("Prevents players from doing anything on the server until they are member of a specific group.")]
+    [Description("Prevents players from doing anything on the server until they are given the bypass permission.")]
     public class VerificationGatekeeper : RustPlugin
     {
         #region Constants
