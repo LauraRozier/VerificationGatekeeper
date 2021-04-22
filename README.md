@@ -6,9 +6,13 @@ This plugin was written after a suggestion by [TFNBlackMarket](https://umod.org/
 Keep in mind that this plugin will disable every possible action a player can perform, other then walking around.
 
 
+## Permissions
+
+- **verificationgatekeeper.bypass** -- Players and groups with this permission bypass all the restrictions imposed by this plugin.
+
+
 ## Configuration
 
-- **Verified Player Group** -- Defines the group that disables all the preventive measures of this plugin.
 - **Admin Is Always Verified** -- (true/false) When set to "true" players with the Admin rank will bypass the preventive measures.
 - **Prevent (Dis-)Mount** -- (true/false) Prevents mountable entity usage. Hooks: *CanDismountEntity, CanMountEntity, CanSwapToSeat, OnRidableAnimalClaim*
 - **Prevent Bed Actions** -- (true/false) Prevents players from interacting with beds. Hooks: *CanAssignBed, CanRenameBed, CanSetBedPublic*
@@ -74,7 +78,6 @@ Keep in mind that this plugin will disable every possible action a player can pe
 
 ```json
 {
-  "Verified Player Group": "verified",
   "Admin Is Always Verified": true,
   "Prevent (Dis-)Mount": true,
   "Prevent Bed Actions": true,

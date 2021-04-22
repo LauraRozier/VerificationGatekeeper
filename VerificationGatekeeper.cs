@@ -32,10 +32,14 @@ using Oxide.Core.Libraries.Covalence;
 
 namespace Oxide.Plugins
 {
-    [Info("Verification Gatekeeper", "ThibmoRozier", "1.0.1")]
+    [Info("Verification Gatekeeper", "ThibmoRozier", "1.0.2")]
     [Description("Prevents players from doing anything on the server until they are member of a specific group.")]
     public class VerificationGatekeeper : RustPlugin
     {
+        #region Constants
+        private const string CPermBypass = "verificationgatekeeper.bypass";
+        #endregion Constants
+
         #region Variables
         private ConfigData FConfigData;
         #endregion Variables
@@ -46,8 +50,6 @@ namespace Oxide.Plugins
         /// </summary>
         private class ConfigData
         {
-            [JsonProperty("Verified Player Group", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue("verified")]
-            public string VerifiedPlayerGroup { get; set; }
             [JsonProperty("Admin Is Always Verified", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
             public bool AdminAlwaysVerified { get; set; }
             [JsonProperty("Prevent (Dis-)Mount", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
@@ -195,7 +197,6 @@ namespace Oxide.Plugins
         {
             FConfigData = new ConfigData
             {
-                VerifiedPlayerGroup = "verified",
                 AdminAlwaysVerified = true,
                 PreventMount = true,
                 PreventBedActions = true,
@@ -270,7 +271,7 @@ namespace Oxide.Plugins
                 return null;
 
             if (aPlayer.IsNpc || aPlayer.IPlayer.IsServer || (FConfigData.AdminAlwaysVerified && Player.IsAdmin(aPlayer)) ||
-                permission.UserHasGroup(aPlayer.UserIDString, FConfigData.VerifiedPlayerGroup))
+                permission.UserHasPermission(aPlayer.UserIDString, CPermBypass))
                 return null;
 
             return false;
@@ -282,7 +283,7 @@ namespace Oxide.Plugins
                 return null;
 
             if (aPlayer.IsServer || (FConfigData.AdminAlwaysVerified && aPlayer.IsAdmin) ||
-                permission.UserHasGroup(aPlayer.Id, FConfigData.VerifiedPlayerGroup))
+                permission.UserHasPermission(aPlayer.Id, CPermBypass))
                 return null;
 
             return false;
@@ -293,6 +294,7 @@ namespace Oxide.Plugins
         void OnServerInitialized()
         {
             LoadConfig();
+            permission.RegisterPermission(CPermBypass, this);
 
             /*
             // Just as a nice-to-have I'll leave this here
@@ -399,7 +401,7 @@ namespace Oxide.Plugins
                 return;
 
             if (aPlayer.IsNpc || aPlayer.IPlayer.IsServer || (FConfigData.AdminAlwaysVerified && Player.IsAdmin(aPlayer)) ||
-                permission.UserHasGroup(aPlayer.UserIDString, FConfigData.VerifiedPlayerGroup))
+                permission.UserHasPermission(aPlayer.UserIDString, CPermBypass))
                 return;
 
             aDoor.SetOpen(true, false);
@@ -411,7 +413,7 @@ namespace Oxide.Plugins
                 return;
 
             if (aPlayer.IsNpc || aPlayer.IPlayer.IsServer || (FConfigData.AdminAlwaysVerified && Player.IsAdmin(aPlayer)) ||
-                permission.UserHasGroup(aPlayer.UserIDString, FConfigData.VerifiedPlayerGroup))
+                permission.UserHasPermission(aPlayer.UserIDString, CPermBypass))
                 return;
 
             aDoor.SetOpen(false, false);
@@ -496,7 +498,7 @@ namespace Oxide.Plugins
                 return null;
 
             if (player.IsNpc || player.IPlayer.IsServer || (FConfigData.AdminAlwaysVerified && Player.IsAdmin(player)) ||
-                permission.UserHasGroup(player.UserIDString, FConfigData.VerifiedPlayerGroup))
+                permission.UserHasPermission(player.UserIDString, CPermBypass))
                 return null;
 
             return ItemContainer.CanAcceptResult.CannotAccept;
