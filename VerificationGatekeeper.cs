@@ -32,7 +32,7 @@ using Oxide.Core.Libraries.Covalence;
 
 namespace Oxide.Plugins
 {
-    [Info("Verification Gatekeeper", "ThibmoRozier", "1.0.2")]
+    [Info("Verification Gatekeeper", "ThibmoRozier", "1.0.3")]
     [Description("Prevents players from doing anything on the server until they are given the bypass permission.")]
     public class VerificationGatekeeper : RustPlugin
     {
@@ -51,238 +51,157 @@ namespace Oxide.Plugins
         private class ConfigData
         {
             [JsonProperty("Admin Is Always Verified", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool AdminAlwaysVerified { get; set; }
+            public bool AdminAlwaysVerified = true;
             [JsonProperty("Prevent (Dis-)Mount", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventMount { get; set; }
+            public bool PreventMount = true;
             [JsonProperty("Prevent Bed Actions", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventBedActions { get; set; }
+            public bool PreventBedActions = true;
             [JsonProperty("Prevent Build", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventBuild { get; set; }
+            public bool PreventBuild = true;
             [JsonProperty("Prevent Card Swiping", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventCardSwiping { get; set; }
+            public bool PreventCardSwiping = true;
             [JsonProperty("Prevent Chat", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventChat { get; set; }
+            public bool PreventChat = true;
             [JsonProperty("Prevent Collectible Pickup", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventCollectiblePickup { get; set; }
+            public bool PreventCollectiblePickup = true;
             [JsonProperty("Prevent Command", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventCommand { get; set; }
+            public bool PreventCommand = true;
             [JsonProperty("Prevent Counter Actions", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventCounterActions { get; set; }
+            public bool PreventCounterActions = true;
             [JsonProperty("Prevent Crafting", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventCrafting { get; set; }
+            public bool PreventCrafting = true;
             [JsonProperty("Prevent Crate Hack", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventCrateHack { get; set; }
+            public bool PreventCrateHack = true;
             [JsonProperty("Prevent Cupboard Actions", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventCupboardActions { get; set; }
+            public bool PreventCupboardActions = true;
             [JsonProperty("Prevent Custom UI", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(false)]
-            public bool PreventCustomUI { get; set; } = false;
+            public bool PreventCustomUI = false;
             [JsonProperty("Prevent Demolish", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventDemolish { get; set; }
+            public bool PreventDemolish = true;
             [JsonProperty("Prevent Deploy Item", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventDeployItem { get; set; }
+            public bool PreventDeployItem = true;
             [JsonProperty("Prevent Door Actions", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventDoorActions { get; set; }
+            public bool PreventDoorActions = true;
             [JsonProperty("Prevent Elevator Actions", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventElevatorActions { get; set; }
+            public bool PreventElevatorActions = true;
             [JsonProperty("Prevent Entity Looting", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventEntityLooting { get; set; }
+            public bool PreventEntityLooting = true;
             [JsonProperty("Prevent Entity Pickup", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventEntityPickup { get; set; }
+            public bool PreventEntityPickup = true;
             [JsonProperty("Prevent Explosives", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventExplosives { get; set; }
+            public bool PreventExplosives = true;
             [JsonProperty("Prevent Flamers", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventFlamers { get; set; }
+            public bool PreventFlamers = true;
             [JsonProperty("Prevent Fuel Actions", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventFuelActions { get; set; }
+            public bool PreventFuelActions = true;
             [JsonProperty("Prevent Growable Gathering", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventGrowableGathering { get; set; }
+            public bool PreventGrowableGathering = true;
             [JsonProperty("Prevent Healing Item Usage", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventHealingItemUsage { get; set; }
+            public bool PreventHealingItemUsage = true;
             [JsonProperty("Prevent Helicopter Actions", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventHelicopterActions { get; set; }
+            public bool PreventHelicopterActions = true;
             [JsonProperty("Prevent Item Action", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventItemAction { get; set; }
+            public bool PreventItemAction = true;
             [JsonProperty("Prevent Item Dropping", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventItemDropping { get; set; }
+            public bool PreventItemDropping = true;
             [JsonProperty("Prevent Item Moving", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventItemMoving { get; set; }
+            public bool PreventItemMoving = true;
             [JsonProperty("Prevent Item Pickup", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventItemPickup { get; set; }
+            public bool PreventItemPickup = true;
             [JsonProperty("Prevent Item Stacking", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventItemStacking { get; set; }
+            public bool PreventItemStacking = true;
             [JsonProperty("Prevent Item Wearing", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventItemWearing { get; set; }
+            public bool PreventItemWearing = true;
             [JsonProperty("Prevent Lift Actions", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventLiftActions { get; set; }
+            public bool PreventLiftActions = true;
             [JsonProperty("Prevent Lock Actions", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventLockActions { get; set; }
+            public bool PreventLockActions = true;
             [JsonProperty("Prevent Mailbox Actions", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventMailboxActions { get; set; }
+            public bool PreventMailboxActions = true;
             [JsonProperty("Prevent Melee", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventMelee { get; set; }
+            public bool PreventMelee = true;
             [JsonProperty("Prevent Oven & Furnace Actions", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventOvenActions { get; set; }
+            public bool PreventOvenActions = true;
             [JsonProperty("Prevent Phone Actions", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventPhoneActions { get; set; }
+            public bool PreventPhoneActions = true;
             [JsonProperty("Prevent Player Assist", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventPlayerAssist { get; set; }
+            public bool PreventPlayerAssist = true;
             [JsonProperty("Prevent Player Looting", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventPlayerLooting { get; set; }
+            public bool PreventPlayerLooting = true;
             [JsonProperty("Prevent Push", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventPush { get; set; }
+            public bool PreventPush = true;
             [JsonProperty("Prevent Recycler Actions", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventRecyclerActions { get; set; }
+            public bool PreventRecyclerActions = true;
             [JsonProperty("Prevent Reloading", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventReloading { get; set; }
+            public bool PreventReloading = true;
             [JsonProperty("Prevent Repair", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventRepair { get; set; }
+            public bool PreventRepair = true;
             [JsonProperty("Prevent Research", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventResearch { get; set; }
+            public bool PreventResearch = true;
             [JsonProperty("Prevent Rockets", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventRockets { get; set; }
+            public bool PreventRockets = true;
             [JsonProperty("Prevent Shop Actions", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventShopActions { get; set; }
+            public bool PreventShopActions = true;
             [JsonProperty("Prevent Sign Update", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventSignUpdate { get; set; }
+            public bool PreventSignUpdate = true;
             [JsonProperty("Prevent Stash Actions", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventStashActions { get; set; }
+            public bool PreventStashActions = true;
             [JsonProperty("Prevent Structure Rotate", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventStructureRotate { get; set; }
+            public bool PreventStructureRotate = true;
             [JsonProperty("Prevent Switch Actions", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventSwitchActions { get; set; }
+            public bool PreventSwitchActions = true;
             [JsonProperty("Prevent Team Creation", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventTeamCreation { get; set; }
+            public bool PreventTeamCreation = true;
             [JsonProperty("Prevent Trap Actions", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventTrapActions { get; set; }
+            public bool PreventTrapActions = true;
             [JsonProperty("Prevent Turret Actions", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventTurretActions { get; set; }
+            public bool PreventTurretActions = true;
             [JsonProperty("Prevent Upgrade", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventUpgrade { get; set; }
+            public bool PreventUpgrade = true;
             [JsonProperty("Prevent Vending Admin", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventVendingAdmin { get; set; }
+            public bool PreventVendingAdmin = true;
             [JsonProperty("Prevent Vending Usage", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventVendingUsage { get; set; }
+            public bool PreventVendingUsage = true;
             [JsonProperty("Prevent Weapon Firing", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventWeaponFiring { get; set; }
+            public bool PreventWeaponFiring = true;
             [JsonProperty("Prevent Wiring", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventWiring { get; set; }
+            public bool PreventWiring = true;
             [JsonProperty("Prevent Wood Cutting", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventWoodCutting { get; set; }
+            public bool PreventWoodCutting = true;
             [JsonProperty("Prevent World Projectiles", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventWorldProjectiles { get; set; }
+            public bool PreventWorldProjectiles = true;
             [JsonProperty("Prevent Wounded", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
-            public bool PreventWounded { get; set; }
+            public bool PreventWounded = true;
         }
 
         protected override void LoadConfig()
         {
             base.LoadConfig();
-
-            try
-            {
-                FConfigData = Config.ReadObject<ConfigData>();
-
-                if (FConfigData == null)
-                    LoadDefaultConfig();
-            }
-            catch (Exception)
-            {
-                LoadDefaultConfig();
-            }
-
+            FConfigData = Config.ReadObject<ConfigData>();
             SaveConfig();
         }
 
         protected override void LoadDefaultConfig()
         {
-            FConfigData = new ConfigData
-            {
-                AdminAlwaysVerified = true,
-                PreventMount = true,
-                PreventBedActions = true,
-                PreventBuild = true,
-                PreventCardSwiping = true,
-                PreventChat = true,
-                PreventCollectiblePickup = true,
-                PreventCommand = true,
-                PreventCounterActions = true,
-                PreventCrafting = true,
-                PreventCrateHack = true,
-                PreventCupboardActions = true,
-                PreventCustomUI = false,
-                PreventDemolish = true,
-                PreventDeployItem = true,
-                PreventDoorActions = true,
-                PreventElevatorActions = true,
-                PreventEntityLooting = true,
-                PreventEntityPickup = true,
-                PreventExplosives = true,
-                PreventFlamers = true,
-                PreventFuelActions = true,
-                PreventGrowableGathering = true,
-                PreventHealingItemUsage = true,
-                PreventHelicopterActions = true,
-                PreventItemAction = true,
-                PreventItemDropping = true,
-                PreventItemMoving = true,
-                PreventItemPickup = true,
-                PreventItemStacking = true,
-                PreventItemWearing = true,
-                PreventLiftActions = true,
-                PreventLockActions = true,
-                PreventMailboxActions = true,
-                PreventMelee = true,
-                PreventOvenActions = true,
-                PreventPhoneActions = true,
-                PreventPlayerAssist = true,
-                PreventPlayerLooting = true,
-                PreventPush = true,
-                PreventRecyclerActions = true,
-                PreventReloading = true,
-                PreventRepair = true,
-                PreventResearch = true,
-                PreventRockets = true,
-                PreventShopActions = true,
-                PreventSignUpdate = true,
-                PreventStashActions = true,
-                PreventStructureRotate = true,
-                PreventSwitchActions = true,
-                PreventTeamCreation = true,
-                PreventTrapActions = true,
-                PreventTurretActions = true,
-                PreventUpgrade = true,
-                PreventVendingAdmin = true,
-                PreventVendingUsage = true,
-                PreventWeaponFiring = true,
-                PreventWiring = true,
-                PreventWoodCutting = true,
-                PreventWorldProjectiles = true,
-                PreventWounded = true
-            };
+            FConfigData = new ConfigData();
         }
 
         protected override void SaveConfig() => Config.WriteObject(FConfigData);
         #endregion Config
 
         #region Script Methods
-        private object CheckAndReturnNullOrFalse(BasePlayer aPlayer, bool aIndEnforce)
+        private bool? CheckAndReturnNullOrFalse(BasePlayer aPlayer)
         {
-            if (aPlayer == null || !aIndEnforce)
-                return null;
-
-            if (aPlayer.IsNpc || aPlayer.IPlayer.IsServer || (FConfigData.AdminAlwaysVerified && Player.IsAdmin(aPlayer)) ||
+            if (aPlayer == null || aPlayer.IsNpc || aPlayer.IPlayer.IsServer || (FConfigData.AdminAlwaysVerified && Player.IsAdmin(aPlayer)) ||
                 permission.UserHasPermission(aPlayer.UserIDString, CPermBypass))
                 return null;
 
             return false;
         }
 
-        private object CheckAndReturnNullOrFalse(IPlayer aPlayer, bool aIndEnforce)
+        private bool? CheckAndReturnNullOrFalse(IPlayer aPlayer)
         {
-            if (aPlayer == null || !aIndEnforce)
-                return null;
-
-            if (aPlayer.IsServer || (FConfigData.AdminAlwaysVerified && aPlayer.IsAdmin) ||
+            if (aPlayer == null || aPlayer.IsServer || (FConfigData.AdminAlwaysVerified && aPlayer.IsAdmin) ||
                 permission.UserHasPermission(aPlayer.Id, CPermBypass))
                 return null;
 
@@ -293,7 +212,6 @@ namespace Oxide.Plugins
         #region Hooks
         void OnServerInitialized()
         {
-            LoadConfig();
             permission.RegisterPermission(CPermBypass, this);
 
             /*
@@ -301,106 +219,348 @@ namespace Oxide.Plugins
             if (!permission.GroupExists(FConfigData.VerifiedPlayerGroup))
                 permission.CreateGroup(FConfigData.VerifiedPlayerGroup, "", 0);
             */
+
+            if (!FConfigData.PreventMount) {
+                Unsubscribe(nameof(CanDismountEntity));
+                Unsubscribe(nameof(CanMountEntity));
+                Unsubscribe(nameof(CanSwapToSeat));
+                Unsubscribe(nameof(OnRidableAnimalClaim));
+            }
+
+            if (!FConfigData.PreventBedActions) {
+                Unsubscribe(nameof(CanAssignBed));
+                Unsubscribe(nameof(CanRenameBed));
+                Unsubscribe(nameof(CanSetBedPublic));
+            }
+
+            if (!FConfigData.PreventBuild) {
+                Unsubscribe(nameof(CanAffordToPlace));
+                Unsubscribe(nameof(CanBuild));
+                Unsubscribe(nameof(OnConstructionPlace));
+            }
+
+            if (!FConfigData.PreventCardSwiping)
+                Unsubscribe(nameof(OnCardSwipe));
+
+            if (!FConfigData.PreventChat)
+                Unsubscribe(nameof(OnUserChat));
+
+            if (!FConfigData.PreventCollectiblePickup)
+                Unsubscribe(nameof(OnCollectiblePickup));
+
+            if (!FConfigData.PreventCommand)
+                Unsubscribe(nameof(OnUserCommand));
+
+            if (!FConfigData.PreventCounterActions) {
+                Unsubscribe(nameof(OnCounterModeToggle));
+                Unsubscribe(nameof(OnCounterTargetChange));
+            }
+
+            if (!FConfigData.PreventCrafting)
+                Unsubscribe(nameof(CanCraft));
+
+            if (!FConfigData.PreventCrateHack)
+                Unsubscribe(nameof(CanHackCrate));
+
+            if (!FConfigData.PreventCupboardActions) {
+                Unsubscribe(nameof(OnCupboardAuthorize));
+                Unsubscribe(nameof(OnCupboardClearList));
+                Unsubscribe(nameof(OnCupboardDeauthorize));
+            }
+
+            if (!FConfigData.PreventCustomUI)
+                Unsubscribe(nameof(CanUseUI));
+
+            if (!FConfigData.PreventDemolish) {
+                Unsubscribe(nameof(CanDemolish));
+                Unsubscribe(nameof(OnStructureDemolish));
+            }
+
+            if (!FConfigData.PreventDeployItem)
+                Unsubscribe(nameof(CanDeployItem));
+
+            if (!FConfigData.PreventDoorActions) {
+                Unsubscribe(nameof(OnDoorClosed));
+                Unsubscribe(nameof(OnDoorOpened));
+            }
+
+            if (!FConfigData.PreventElevatorActions)
+                Unsubscribe(nameof(OnElevatorButtonPress));
+
+            if (!FConfigData.PreventEntityLooting)
+                Unsubscribe(nameof(CanLootEntity));
+
+            if (!FConfigData.PreventEntityPickup)
+                Unsubscribe(nameof(CanPickupEntity));
+
+            if (!FConfigData.PreventExplosives) {
+                Unsubscribe(nameof(OnExplosiveDropped));
+                Unsubscribe(nameof(OnExplosiveThrown));
+            }
+
+            if (!FConfigData.PreventFlamers)
+                Unsubscribe(nameof(OnFlameThrowerBurn));
+
+            if (!FConfigData.PreventFuelActions)
+                Unsubscribe(nameof(CanCheckFuel));
+
+            if (!FConfigData.PreventGrowableGathering)
+                Unsubscribe(nameof(OnGrowableGather));
+
+            if (!FConfigData.PreventHealingItemUsage)
+                Unsubscribe(nameof(OnHealingItemUse));
+
+            if (!FConfigData.PreventHelicopterActions)
+                Unsubscribe(nameof(CanUseHelicopter));
+
+            if (!FConfigData.PreventItemAction)
+                Unsubscribe(nameof(OnItemAction));
+
+            if (!FConfigData.PreventItemDropping)
+                Unsubscribe(nameof(CanDropActiveItem));
+
+            if (!FConfigData.PreventItemMoving) {
+                Unsubscribe(nameof(CanAcceptItem));
+                Unsubscribe(nameof(CanMoveItem));
+            }
+
+            if (!FConfigData.PreventItemPickup)
+                Unsubscribe(nameof(OnItemPickup));
+
+            if (!FConfigData.PreventItemStacking)
+                Unsubscribe(nameof(CanStackItem));
+
+            if (!FConfigData.PreventItemWearing)
+                Unsubscribe(nameof(CanWearItem));
+
+            if (!FConfigData.PreventLiftActions)
+                Unsubscribe(nameof(OnLiftUse));
+
+            if (!FConfigData.PreventLockActions) {
+                Unsubscribe(nameof(CanChangeCode));
+                Unsubscribe(nameof(CanLock));
+                Unsubscribe(nameof(CanPickupLock));
+                Unsubscribe(nameof(CanUnlock));
+                Unsubscribe(nameof(CanUseLockedEntity));
+                Unsubscribe(nameof(OnCodeEntered));
+                Unsubscribe(nameof(OnItemLock));
+                Unsubscribe(nameof(OnItemUnlock));
+            }
+
+            if (!FConfigData.PreventMailboxActions)
+                Unsubscribe(nameof(CanUseMailbox));
+
+            if (!FConfigData.PreventMelee) {
+                Unsubscribe(nameof(OnMeleeAttack));
+                Unsubscribe(nameof(OnMeleeThrown));
+            }
+
+            if (!FConfigData.PreventOvenActions)
+                Unsubscribe(nameof(OnOvenToggle));
+
+            if (!FConfigData.PreventPhoneActions) {
+                Unsubscribe(nameof(OnPhoneDial));
+                Unsubscribe(nameof(OnPhoneCallStart));
+                Unsubscribe(nameof(OnPhoneNameUpdate));
+            }
+
+            if (!FConfigData.PreventPlayerAssist) {
+                Unsubscribe(nameof(OnPlayerAssist));
+                Unsubscribe(nameof(OnPlayerRevive));
+            }
+
+            if (!FConfigData.PreventPlayerLooting)
+                Unsubscribe(nameof(CanLootPlayer));
+
+            if (!FConfigData.PreventPush) {
+                Unsubscribe(nameof(CanPushBoat));
+                Unsubscribe(nameof(OnVehiclePush));
+            }
+
+            if (!FConfigData.PreventRecyclerActions)
+                Unsubscribe(nameof(OnRecyclerToggle));
+
+            if (!FConfigData.PreventReloading) {
+                Unsubscribe(nameof(OnReloadMagazine));
+                Unsubscribe(nameof(OnReloadWeapon));
+                Unsubscribe(nameof(OnSwitchAmmo));
+            }
+
+            if (!FConfigData.PreventRepair) {
+                Unsubscribe(nameof(OnHammerHit));
+                Unsubscribe(nameof(OnStructureRepair));
+            }
+
+            if (!FConfigData.PreventResearch) {
+                Unsubscribe(nameof(CanResearchItem));
+                Unsubscribe(nameof(CanUnlockTechTreeNode));
+                Unsubscribe(nameof(CanUnlockTechTreeNodePath));
+            }
+
+            if (!FConfigData.PreventRockets)
+                Unsubscribe(nameof(OnRocketLaunched));
+
+            if (!FConfigData.PreventShopActions)
+                Unsubscribe(nameof(OnShopCompleteTrade));
+
+            if (!FConfigData.PreventSignUpdate)
+                Unsubscribe(nameof(CanUpdateSign));
+
+            if (!FConfigData.PreventStashActions) {
+                Unsubscribe(nameof(CanHideStash));
+                Unsubscribe(nameof(CanSeeStash));
+            }
+
+            if (!FConfigData.PreventStructureRotate)
+                Unsubscribe(nameof(OnStructureRotate));
+
+            if (!FConfigData.PreventSwitchActions)
+                Unsubscribe(nameof(OnSwitchToggle));
+
+            if (!FConfigData.PreventTeamCreation)
+                Unsubscribe(nameof(OnTeamCreate));
+
+            if (!FConfigData.PreventTrapActions) {
+                Unsubscribe(nameof(OnTrapArm));
+                Unsubscribe(nameof(OnTrapDisarm));
+            }
+
+            if (!FConfigData.PreventTurretActions) {
+                Unsubscribe(nameof(OnTurretAuthorize));
+                Unsubscribe(nameof(OnTurretClearList));
+                Unsubscribe(nameof(OnTurretRotate));
+            }
+
+            if (!FConfigData.PreventUpgrade) {
+                Unsubscribe(nameof(CanAffordUpgrade));
+                Unsubscribe(nameof(CanChangeGrade));
+                Unsubscribe(nameof(OnStructureUpgrade));
+            }
+
+            if (!FConfigData.PreventVendingAdmin) {
+                Unsubscribe(nameof(CanAdministerVending));
+                Unsubscribe(nameof(OnRotateVendingMachine));
+            }
+
+            if (!FConfigData.PreventVendingUsage) {
+                Unsubscribe(nameof(CanUseVending));
+                Unsubscribe(nameof(OnBuyVendingItem));
+                Unsubscribe(nameof(OnVendingTransaction));
+            }
+
+            if (!FConfigData.PreventWeaponFiring)
+                Unsubscribe(nameof(OnWeaponFired));
+
+            if (!FConfigData.PreventWiring)
+                Unsubscribe(nameof(CanUseWires));
+
+            if (!FConfigData.PreventWoodCutting)
+                Unsubscribe(nameof(CanTakeCutting));
+
+            if (!FConfigData.PreventWorldProjectiles) {
+                Unsubscribe(nameof(CanCreateWorldProjectile));
+                Unsubscribe(nameof(OnCreateWorldProjectile));
+            }
+
+            if (!FConfigData.PreventWounded)
+                Unsubscribe(nameof(CanBeWounded));
         }
 
         // PreventMount
-        object CanDismountEntity(BasePlayer aPlayer, BaseMountable aEntity) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventMount);
+        bool? CanDismountEntity(BasePlayer aPlayer, BaseMountable aEntity) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object CanMountEntity(BasePlayer aPlayer, BaseMountable aEntity) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventMount);
+        bool? CanMountEntity(BasePlayer aPlayer, BaseMountable aEntity) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object CanSwapToSeat(BasePlayer aPlayer, BaseMountable aMountable) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventMount);
+        bool? CanSwapToSeat(BasePlayer aPlayer, BaseMountable aMountable) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnRidableAnimalClaim(BaseRidableAnimal aAnimal, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventMount);
+        bool? OnRidableAnimalClaim(BaseRidableAnimal aAnimal, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventBedActions
-        object CanAssignBed(BasePlayer aPlayer, SleepingBag aBag, ulong aTargetPlayerId) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventBedActions);
+        bool? CanAssignBed(BasePlayer aPlayer, SleepingBag aBag, ulong aTargetPlayerId) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object CanRenameBed(BasePlayer aPlayer, SleepingBag aBed, string aBedName) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventBedActions);
+        bool? CanRenameBed(BasePlayer aPlayer, SleepingBag aBed, string aBedName) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object CanSetBedPublic(BasePlayer aPlayer, SleepingBag aBed) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventBedActions);
+        bool? CanSetBedPublic(BasePlayer aPlayer, SleepingBag aBed) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventBuild
-        object CanAffordToPlace(BasePlayer aPlayer, Planner aPlanner, Construction aConstruction) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventBuild);
+        bool? CanAffordToPlace(BasePlayer aPlayer, Planner aPlanner, Construction aConstruction) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
-        object CanBuild(Planner aPlanner, Construction aPrefab, Construction.Target aTarget) =>
-            CheckAndReturnNullOrFalse(aPlanner.GetOwnerPlayer(), FConfigData.PreventBuild);
+        bool? CanBuild(Planner aPlanner, Construction aPrefab, Construction.Target aTarget) =>
+            CheckAndReturnNullOrFalse(aPlanner.GetOwnerPlayer());
 
-        object OnConstructionPlace(BaseEntity aEntity, Construction aComponent, Construction.Target aConstructionTarget, BasePlayer aPlayer) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventBuild);
+        bool? OnConstructionPlace(BaseEntity aEntity, Construction aComponent, Construction.Target aConstructionTarget, BasePlayer aPlayer) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventCardSwiping
-        object OnCardSwipe(CardReader cardReader, Keycard card, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventCardSwiping);
+        bool? OnCardSwipe(CardReader cardReader, Keycard card, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventChat
-        object OnUserChat(IPlayer aPlayer, string aMessage) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventChat);
+        bool? OnUserChat(IPlayer aPlayer, string aMessage) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventCollectiblePickup
-        object OnCollectiblePickup(Item aItem, BasePlayer aPlayer, CollectibleEntity aEntity) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventCollectiblePickup);
+        bool? OnCollectiblePickup(Item aItem, BasePlayer aPlayer, CollectibleEntity aEntity) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventCommand
-        object OnUserCommand(IPlayer aPlayer, string command, string[] args) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventCommand);
+        bool? OnUserCommand(IPlayer aPlayer, string command, string[] args) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventCounterActions
-        object OnCounterModeToggle(PowerCounter aCounter, BasePlayer aPlayer, bool aMode) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventCounterActions);
+        bool? OnCounterModeToggle(PowerCounter aCounter, BasePlayer aPlayer, bool aMode) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnCounterTargetChange(PowerCounter aCounter, BasePlayer aPlayer, int aTargetNumber) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventCounterActions);
+        bool? OnCounterTargetChange(PowerCounter aCounter, BasePlayer aPlayer, int aTargetNumber) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventCrafting
-        object CanCraft(ItemCrafter aItemCrafter, ItemBlueprint aBp, int aAmount) =>
-            CheckAndReturnNullOrFalse(aItemCrafter.baseEntity, FConfigData.PreventCrafting);
+        bool? CanCraft(ItemCrafter aItemCrafter, ItemBlueprint aBp, int aAmount) =>
+            CheckAndReturnNullOrFalse(aItemCrafter.baseEntity);
 
-        object CanCraft(PlayerBlueprints aPlayerBlueprints, ItemDefinition aItemDefinition, int aSkinItemId) =>
-            CheckAndReturnNullOrFalse(aPlayerBlueprints.baseEntity, FConfigData.PreventCrafting);
+        bool? CanCraft(PlayerBlueprints aPlayerBlueprints, ItemDefinition aItemDefinition, int aSkinItemId) =>
+            CheckAndReturnNullOrFalse(aPlayerBlueprints.baseEntity);
 
 
         // PreventCrateHack
-        object CanHackCrate(BasePlayer aPlayer, HackableLockedCrate aCrate) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventCrateHack);
+        bool? CanHackCrate(BasePlayer aPlayer, HackableLockedCrate aCrate) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventCupboardActions
-        object OnCupboardAuthorize(BuildingPrivlidge aPrivilege, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventCupboardActions);
+        bool? OnCupboardAuthorize(BuildingPrivlidge aPrivilege, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnCupboardClearList(BuildingPrivlidge aPrivilege, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventCupboardActions);
+        bool? OnCupboardClearList(BuildingPrivlidge aPrivilege, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnCupboardDeauthorize(BuildingPrivlidge aPrivilege, BasePlayer aPlayer) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventCupboardActions);
+        bool? OnCupboardDeauthorize(BuildingPrivlidge aPrivilege, BasePlayer aPlayer) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventCustomUI
-        object CanUseUI(BasePlayer aPlayer, string aJson) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventCustomUI);
+        bool? CanUseUI(BasePlayer aPlayer, string aJson) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventDemolish
-        object CanDemolish(BasePlayer aPlayer, BuildingBlock aBlock, BuildingGrade.Enum aGrade) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventDemolish);
+        bool? CanDemolish(BasePlayer aPlayer, BuildingBlock aBlock, BuildingGrade.Enum aGrade) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnStructureDemolish(BaseCombatEntity aEntity, BasePlayer aPlayer, bool aImmediate) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventDemolish);
+        bool? OnStructureDemolish(BaseCombatEntity aEntity, BasePlayer aPlayer, bool aImmediate) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventDeployItem
-        object CanDeployItem(BasePlayer aPlayer, Deployer aDeployer, uint aEntityId) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventDeployItem);
+        bool? CanDeployItem(BasePlayer aPlayer, Deployer aDeployer, uint aEntityId) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventDoorActions
         void OnDoorClosed(Door aDoor, BasePlayer aPlayer)
         {
-            if (aPlayer == null || !FConfigData.PreventDoorActions)
-                return;
-
-            if (aPlayer.IsNpc || aPlayer.IPlayer.IsServer || (FConfigData.AdminAlwaysVerified && Player.IsAdmin(aPlayer)) ||
+            if (aPlayer == null || aPlayer.IsNpc || aPlayer.IPlayer.IsServer || (FConfigData.AdminAlwaysVerified && Player.IsAdmin(aPlayer)) ||
                 permission.UserHasPermission(aPlayer.UserIDString, CPermBypass))
                 return;
 
@@ -409,10 +569,7 @@ namespace Oxide.Plugins
 
         void OnDoorOpened(Door aDoor, BasePlayer aPlayer)
         {
-            if (aPlayer == null || !FConfigData.PreventDoorActions)
-                return;
-
-            if (aPlayer.IsNpc || aPlayer.IPlayer.IsServer || (FConfigData.AdminAlwaysVerified && Player.IsAdmin(aPlayer)) ||
+            if (aPlayer == null || aPlayer.IsNpc || aPlayer.IPlayer.IsServer || (FConfigData.AdminAlwaysVerified && Player.IsAdmin(aPlayer)) ||
                 permission.UserHasPermission(aPlayer.UserIDString, CPermBypass))
                 return;
 
@@ -421,36 +578,36 @@ namespace Oxide.Plugins
 
 
         // PreventElevatorActions
-        object OnElevatorButtonPress(ElevatorLift aLift, BasePlayer aPlayer, Elevator.Direction aDirection, bool aToTopOrBottom) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventElevatorActions);
+        bool? OnElevatorButtonPress(ElevatorLift aLift, BasePlayer aPlayer, Elevator.Direction aDirection, bool aToTopOrBottom) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventEntityLooting
-        object CanLootEntity(BasePlayer aPlayer, BaseRidableAnimal aAnimal) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventEntityLooting);
+        bool? CanLootEntity(BasePlayer aPlayer, BaseRidableAnimal aAnimal) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object CanLootEntity(BasePlayer aPlayer, DroppedItemContainer aContainer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventEntityLooting);
+        bool? CanLootEntity(BasePlayer aPlayer, DroppedItemContainer aContainer) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object CanLootEntity(BasePlayer aPlayer, LootableCorpse aCorpse) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventEntityLooting);
+        bool? CanLootEntity(BasePlayer aPlayer, LootableCorpse aCorpse) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object CanLootEntity(BasePlayer aPlayer, ResourceContainer aContainer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventEntityLooting);
+        bool? CanLootEntity(BasePlayer aPlayer, ResourceContainer aContainer) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object CanLootEntity(BasePlayer aPlayer, StorageContainer aContainer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventEntityLooting);
+        bool? CanLootEntity(BasePlayer aPlayer, StorageContainer aContainer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventEntityPickup
-        object CanPickupEntity(BasePlayer aPlayer, BaseEntity aEntity) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventEntityPickup);
+        bool? CanPickupEntity(BasePlayer aPlayer, BaseEntity aEntity) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventExplosives
         void OnExplosiveDropped(BasePlayer aPlayer, BaseEntity aEntity, ThrownWeapon aItem)
         {
-            if (CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventExplosives) != null)
+            if (CheckAndReturnNullOrFalse(aPlayer) != null)
                 aEntity.AdminKill();
         }
 
         void OnExplosiveThrown(BasePlayer aPlayer, BaseEntity aEntity, ThrownWeapon aItem)
         {
-            if (CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventExplosives) != null)
+            if (CheckAndReturnNullOrFalse(aPlayer) != null)
                 aEntity.AdminKill();
         }
 
@@ -458,35 +615,35 @@ namespace Oxide.Plugins
         // PreventFlamers
         void OnFlameThrowerBurn(FlameThrower aThrower, BaseEntity aFlame)
         {
-            if (CheckAndReturnNullOrFalse(aThrower.GetOwnerPlayer(), FConfigData.PreventFlamers) != null)
+            if (CheckAndReturnNullOrFalse(aThrower.GetOwnerPlayer()) != null)
                 aThrower.SetFlameState(false);
         }
 
 
         // PreventFuelActions
-        object CanCheckFuel(EntityFuelSystem aFuelSystem, StorageContainer aFuelContainer, BasePlayer aPlayer) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventFuelActions);
+        bool? CanCheckFuel(EntityFuelSystem aFuelSystem, StorageContainer aFuelContainer, BasePlayer aPlayer) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventGrowableGathering
-        object OnGrowableGather(GrowableEntity plant, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventGrowableGathering);
+        bool? OnGrowableGather(GrowableEntity plant, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventHealingItemUsage
-        object OnHealingItemUse(MedicalTool aTool, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventHealingItemUsage);
+        bool? OnHealingItemUse(MedicalTool aTool, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventHelicopterActions
-        object CanUseHelicopter(BasePlayer aPlayer, CH47HelicopterAIController aHelicopter) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventHelicopterActions);
+        bool? CanUseHelicopter(BasePlayer aPlayer, CH47HelicopterAIController aHelicopter) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventItemAction
-        object OnItemAction(Item aItem, string aAction, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventItemAction);
+        bool? OnItemAction(Item aItem, string aAction, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventItemDropping
-        object CanDropActiveItem(BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventItemDropping);
+        bool? CanDropActiveItem(BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventItemMoving
@@ -494,241 +651,238 @@ namespace Oxide.Plugins
         {
             BasePlayer player = aItem.GetOwnerPlayer();
 
-            if (player == null || !FConfigData.PreventItemMoving)
-                return null;
-
-            if (player.IsNpc || player.IPlayer.IsServer || (FConfigData.AdminAlwaysVerified && Player.IsAdmin(player)) ||
+            if (player == null || player.IsNpc || player.IPlayer.IsServer || (FConfigData.AdminAlwaysVerified && Player.IsAdmin(player)) ||
                 permission.UserHasPermission(player.UserIDString, CPermBypass))
                 return null;
 
             return ItemContainer.CanAcceptResult.CannotAccept;
         }
 
-        object CanMoveItem(Item aItem, PlayerInventory aPlayerLoot, uint aTargetContainer, int aTargetSlot, int aAmount)
+        bool? CanMoveItem(Item aItem, PlayerInventory aPlayerLoot, uint aTargetContainer, int aTargetSlot, int aAmount)
         {
-            object result = CheckAndReturnNullOrFalse(aItem.GetOwnerPlayer(), FConfigData.PreventItemMoving);
+            bool? result = CheckAndReturnNullOrFalse(aItem.GetOwnerPlayer());
             return result is bool
                 ? result
-                : CheckAndReturnNullOrFalse(aPlayerLoot.baseEntity, FConfigData.PreventItemMoving);
+                : CheckAndReturnNullOrFalse(aPlayerLoot.baseEntity);
         }
 
 
         // PreventItemPickup
-        object OnItemPickup(Item aItem, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventItemPickup);
+        bool? OnItemPickup(Item aItem, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventItemStacking
-        object CanStackItem(Item aItem, Item aTargetItem) => CheckAndReturnNullOrFalse(aItem.GetOwnerPlayer(), FConfigData.PreventItemStacking);
+        bool? CanStackItem(Item aItem, Item aTargetItem) => CheckAndReturnNullOrFalse(aItem.GetOwnerPlayer());
 
 
         // PreventItemWearing
-        object CanWearItem(PlayerInventory aInventory, Item aItem, int aTargetSlot) =>
-            CheckAndReturnNullOrFalse(aInventory.baseEntity, FConfigData.PreventItemWearing);
+        bool? CanWearItem(PlayerInventory aInventory, Item aItem, int aTargetSlot) =>
+            CheckAndReturnNullOrFalse(aInventory.baseEntity);
 
 
         // PreventLiftActions
-        object OnLiftUse(Lift aLift, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventLiftActions);
+        bool? OnLiftUse(Lift aLift, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnLiftUse(ProceduralLift aLift, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventLiftActions);
+        bool? OnLiftUse(ProceduralLift aLift, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventLockActions
-        object CanChangeCode(BasePlayer aPlayer, CodeLock aCodeLock, string aNewCode, bool aIsGuestCode) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventLockActions);
+        bool? CanChangeCode(BasePlayer aPlayer, CodeLock aCodeLock, string aNewCode, bool aIsGuestCode) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
-        object CanLock(BasePlayer aPlayer, BaseLock aLock) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventLockActions);
+        bool? CanLock(BasePlayer aPlayer, BaseLock aLock) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object CanPickupLock(BasePlayer aPlayer, BaseLock aBaseLock) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventLockActions);
+        bool? CanPickupLock(BasePlayer aPlayer, BaseLock aBaseLock) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object CanUnlock(BasePlayer aPlayer, BaseLock aBaseLock) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventLockActions);
+        bool? CanUnlock(BasePlayer aPlayer, BaseLock aBaseLock) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object CanUseLockedEntity(BasePlayer aPlayer, BaseLock aBaseLock) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventLockActions);
+        bool? CanUseLockedEntity(BasePlayer aPlayer, BaseLock aBaseLock) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnCodeEntered(CodeLock aCodeLock, BasePlayer aPlayer, string aCode) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventLockActions);
+        bool? OnCodeEntered(CodeLock aCodeLock, BasePlayer aPlayer, string aCode) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnItemLock(Item aItem) => CheckAndReturnNullOrFalse(aItem.GetOwnerPlayer(), FConfigData.PreventLockActions);
+        bool? OnItemLock(Item aItem) => CheckAndReturnNullOrFalse(aItem.GetOwnerPlayer());
 
-        object OnItemUnlock(Item aItem) => CheckAndReturnNullOrFalse(aItem.GetOwnerPlayer(), FConfigData.PreventLockActions);
+        bool? OnItemUnlock(Item aItem) => CheckAndReturnNullOrFalse(aItem.GetOwnerPlayer());
 
 
         // PreventMailboxActions
-        object CanUseMailbox(BasePlayer aPlayer, Mailbox aMailbox) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventMailboxActions);
+        bool? CanUseMailbox(BasePlayer aPlayer, Mailbox aMailbox) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventMelee
-        object OnMeleeAttack(BasePlayer aPlayer, HitInfo aInfo) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventMelee);
+        bool? OnMeleeAttack(BasePlayer aPlayer, HitInfo aInfo) => CheckAndReturnNullOrFalse(aPlayer);
 
         void OnMeleeThrown(BasePlayer aPlayer, Item aItem)
         {
-            if (CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventMelee) != null)
+            if (CheckAndReturnNullOrFalse(aPlayer) != null)
                 aItem.Remove();
         }
 
 
         // PreventOvenActions
-        object OnOvenToggle(BaseOven aOven, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventOvenActions);
+        bool? OnOvenToggle(BaseOven aOven, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventPhoneActions
-        object OnPhoneDial(PhoneController aCallerPhone, PhoneController aReceiverPhone, BasePlayer aPlayer) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventPhoneActions);
+        bool? OnPhoneDial(PhoneController aCallerPhone, PhoneController aReceiverPhone, BasePlayer aPlayer) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnPhoneCallStart(PhoneController aPhone, PhoneController aOtherPhone, BasePlayer aPlayer) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventPhoneActions);
+        bool? OnPhoneCallStart(PhoneController aPhone, PhoneController aOtherPhone, BasePlayer aPlayer) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnPhoneNameUpdate(PhoneController aPhoneController, string aName, BasePlayer aPlayer) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventPhoneActions);
+        bool? OnPhoneNameUpdate(PhoneController aPhoneController, string aName, BasePlayer aPlayer) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventPlayerAssist
-        object OnPlayerAssist(BasePlayer aTarget, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventPlayerAssist);
+        bool? OnPlayerAssist(BasePlayer aTarget, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnPlayerRevive(BasePlayer aReviver, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventPlayerAssist);
+        bool? OnPlayerRevive(BasePlayer aReviver, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventPlayerLooting
-        object CanLootPlayer(BasePlayer aTarget, BasePlayer aLooter) => CheckAndReturnNullOrFalse(aLooter, FConfigData.PreventPlayerLooting);
+        bool? CanLootPlayer(BasePlayer aTarget, BasePlayer aLooter) => CheckAndReturnNullOrFalse(aLooter);
 
 
         // PreventPush
-        object CanPushBoat(BasePlayer aPlayer, MotorRowboat aBoat) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventPush);
+        bool? CanPushBoat(BasePlayer aPlayer, MotorRowboat aBoat) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnVehiclePush(BaseVehicle aVehicle, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventPush);
+        bool? OnVehiclePush(BaseVehicle aVehicle, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventRecyclerActions
-        object OnRecyclerToggle(Recycler aRecycler, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventRecyclerActions);
+        bool? OnRecyclerToggle(Recycler aRecycler, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventReloading
-        object OnReloadMagazine(BasePlayer aPlayer, BaseProjectile aProjectile, int aDesiredAmount) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventReloading);
+        bool? OnReloadMagazine(BasePlayer aPlayer, BaseProjectile aProjectile, int aDesiredAmount) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnReloadWeapon(BasePlayer aPlayer, BaseProjectile aProjectile) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventReloading);
+        bool? OnReloadWeapon(BasePlayer aPlayer, BaseProjectile aProjectile) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnSwitchAmmo(BasePlayer aPlayer, BaseProjectile aProjectile) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventReloading);
+        bool? OnSwitchAmmo(BasePlayer aPlayer, BaseProjectile aProjectile) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventRepair
-        object OnHammerHit(BasePlayer aPlayer, HitInfo aInfo) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventRepair);
+        bool? OnHammerHit(BasePlayer aPlayer, HitInfo aInfo) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnStructureRepair(BaseCombatEntity aEntity, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventRepair);
+        bool? OnStructureRepair(BaseCombatEntity aEntity, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventResearch
-        object CanResearchItem(BasePlayer aPlayer, Item aTargetItem) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventResearch);
+        bool? CanResearchItem(BasePlayer aPlayer, Item aTargetItem) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object CanUnlockTechTreeNode(BasePlayer aPlayer, TechTreeData.NodeInstance aNode, TechTreeData aTechTree) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventResearch);
+        bool? CanUnlockTechTreeNode(BasePlayer aPlayer, TechTreeData.NodeInstance aNode, TechTreeData aTechTree) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
-        object CanUnlockTechTreeNodePath(BasePlayer aPlayer, TechTreeData.NodeInstance aNode, TechTreeData aTechTree) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventResearch);
+        bool? CanUnlockTechTreeNodePath(BasePlayer aPlayer, TechTreeData.NodeInstance aNode, TechTreeData aTechTree) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventRockets
         void OnRocketLaunched(BasePlayer aPlayer, BaseEntity aEntity)
         {
-            if (CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventRockets) != null)
+            if (CheckAndReturnNullOrFalse(aPlayer) != null)
                 aEntity.AdminKill();
         }
 
 
         // PreventShopActions
-        object OnShopCompleteTrade(ShopFront aShop, BasePlayer aCustomer) => CheckAndReturnNullOrFalse(aCustomer, FConfigData.PreventShopActions);
+        bool? OnShopCompleteTrade(ShopFront aShop, BasePlayer aCustomer) => CheckAndReturnNullOrFalse(aCustomer);
 
 
         // PreventSignUpdate
-        object CanUpdateSign(BasePlayer aPlayer, PhotoFrame aPhotoFrame) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventSignUpdate);
+        bool? CanUpdateSign(BasePlayer aPlayer, PhotoFrame aPhotoFrame) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object CanUpdateSign(BasePlayer aPlayer, Signage aSign) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventSignUpdate);
+        bool? CanUpdateSign(BasePlayer aPlayer, Signage aSign) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventStashActions
-        object CanHideStash(BasePlayer aPlayer, StashContainer aStash) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventStashActions);
+        bool? CanHideStash(BasePlayer aPlayer, StashContainer aStash) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object CanSeeStash(BasePlayer aPlayer, StashContainer aStash) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventStashActions);
+        bool? CanSeeStash(BasePlayer aPlayer, StashContainer aStash) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventStructureRotate
-        object OnStructureRotate(BaseCombatEntity aEntity, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventStructureRotate);
+        bool? OnStructureRotate(BaseCombatEntity aEntity, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventSwitchActions
-        object OnSwitchToggle(IOEntity aEntity, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventSwitchActions);
+        bool? OnSwitchToggle(IOEntity aEntity, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventTeamCreation
-        object OnTeamCreate(BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventTeamCreation);
+        bool? OnTeamCreate(BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventTrapActions
-        object OnTrapArm(BearTrap aTrap, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventTrapActions);
+        bool? OnTrapArm(BearTrap aTrap, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnTrapDisarm(Landmine aTrap, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventTrapActions);
+        bool? OnTrapDisarm(Landmine aTrap, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventTurretActions
-        object OnTurretAuthorize(AutoTurret aTurret, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventTurretActions);
+        bool? OnTurretAuthorize(AutoTurret aTurret, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnTurretClearList(AutoTurret aTurret, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventTurretActions);
+        bool? OnTurretClearList(AutoTurret aTurret, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnTurretRotate(AutoTurret aTurret, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventTurretActions);
+        bool? OnTurretRotate(AutoTurret aTurret, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventUpgrade
-        object CanAffordUpgrade(BasePlayer aPlayer, BuildingBlock aBlock, BuildingGrade.Enum aGrade) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventUpgrade);
+        bool? CanAffordUpgrade(BasePlayer aPlayer, BuildingBlock aBlock, BuildingGrade.Enum aGrade) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
-        object CanChangeGrade(BasePlayer aPlayer, BuildingBlock aBlock, BuildingGrade.Enum aGrade) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventUpgrade);
+        bool? CanChangeGrade(BasePlayer aPlayer, BuildingBlock aBlock, BuildingGrade.Enum aGrade) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnStructureUpgrade(BaseCombatEntity aEntity, BasePlayer aPlayer, BuildingGrade.Enum aGrade) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventUpgrade);
+        bool? OnStructureUpgrade(BaseCombatEntity aEntity, BasePlayer aPlayer, BuildingGrade.Enum aGrade) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventVendingAdmin
-        object CanAdministerVending(BasePlayer aPlayer, VendingMachine aMachine) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventVendingAdmin);
+        bool? CanAdministerVending(BasePlayer aPlayer, VendingMachine aMachine) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnRotateVendingMachine(VendingMachine aMachine, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventVendingAdmin);
+        bool? OnRotateVendingMachine(VendingMachine aMachine, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventVendingUsage
-        object CanUseVending(VendingMachine aMachine, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventVendingUsage);
+        bool? CanUseVending(VendingMachine aMachine, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnBuyVendingItem(VendingMachine aMachine, BasePlayer aPlayer, int aSellOrderId, int aNumberOfTransactions) =>
-            CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventVendingUsage);
+        bool? OnBuyVendingItem(VendingMachine aMachine, BasePlayer aPlayer, int aSellOrderId, int aNumberOfTransactions) =>
+            CheckAndReturnNullOrFalse(aPlayer);
 
-        object OnVendingTransaction(VendingMachine aMachine, BasePlayer aBuyer, int aSellOrderId, int aNumberOfTransactions) =>
-            CheckAndReturnNullOrFalse(aBuyer, FConfigData.PreventVendingUsage);
+        bool? OnVendingTransaction(VendingMachine aMachine, BasePlayer aBuyer, int aSellOrderId, int aNumberOfTransactions) =>
+            CheckAndReturnNullOrFalse(aBuyer);
 
 
         // PreventWeaponFiring
         void OnWeaponFired(BaseProjectile aProjectile, BasePlayer aPlayer, ItemModProjectile aMod, ProtoBuf.ProjectileShoot aProjectiles)
         {
-            if (CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventWeaponFiring) != null)
+            if (CheckAndReturnNullOrFalse(aPlayer) != null)
                 aProjectiles.projectiles.Clear();
         }
 
 
         // PreventWiring
-        object CanUseWires(BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventWiring);
+        bool? CanUseWires(BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventWoodCutting
-        object CanTakeCutting(BasePlayer aPlayer, GrowableEntity aEntity) => CheckAndReturnNullOrFalse(aPlayer, FConfigData.PreventWoodCutting);
+        bool? CanTakeCutting(BasePlayer aPlayer, GrowableEntity aEntity) => CheckAndReturnNullOrFalse(aPlayer);
 
 
         // PreventWorldProjectiles
-        object CanCreateWorldProjectile(HitInfo aInfo, ItemDefinition aItemDef) =>
-            CheckAndReturnNullOrFalse(aInfo.InitiatorPlayer, FConfigData.PreventWorldProjectiles);
+        bool? CanCreateWorldProjectile(HitInfo aInfo, ItemDefinition aItemDef) =>
+            CheckAndReturnNullOrFalse(aInfo.InitiatorPlayer);
 
-        object OnCreateWorldProjectile(HitInfo aInfo, Item aItem) =>
-            CheckAndReturnNullOrFalse(aInfo.InitiatorPlayer, FConfigData.PreventWorldProjectiles);
+        bool? OnCreateWorldProjectile(HitInfo aInfo, Item aItem) =>
+            CheckAndReturnNullOrFalse(aInfo.InitiatorPlayer);
 
 
         // PreventWounded
-        object CanBeWounded(BasePlayer aPlayer, HitInfo aInfo) =>
-            CheckAndReturnNullOrFalse(aInfo.InitiatorPlayer, FConfigData.PreventWounded);
+        bool? CanBeWounded(BasePlayer aPlayer, HitInfo aInfo) =>
+            CheckAndReturnNullOrFalse(aInfo.InitiatorPlayer);
         #endregion Hooks
     }
 }
