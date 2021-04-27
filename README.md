@@ -8,7 +8,70 @@ Keep in mind that this plugin will disable every possible action a player can pe
 
 ## Permissions
 
+**Due to the high amount of permissions I decided to only register permissions for features that are enabled via the config!**
+
 - **verificationgatekeeper.bypass** -- Players and groups with this permission bypass all the restrictions imposed by this plugin.
+
+- **verificationgatekeeper.bypass.mount** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanDismountEntity, CanMountEntity, CanSwapToSeat, OnRidableAnimalClaim*
+- **verificationgatekeeper.bypass.bedactions** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanAssignBed, CanRenameBed, CanSetBedPublic*
+- **verificationgatekeeper.bypass.build** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanAffordToPlace, CanBuild, OnConstructionPlace*
+- **verificationgatekeeper.bypass.cardswiping** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnCardSwipe*
+- **verificationgatekeeper.bypass.chat** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnUserChat*
+- **verificationgatekeeper.bypass.collectiblepickup** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnCollectiblePickup*
+- **verificationgatekeeper.bypass.command** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnUserCommand*
+- **verificationgatekeeper.bypass.counteractions** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnCounterModeToggle, OnCounterTargetChange*
+- **verificationgatekeeper.bypass.crafting** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanCraft*
+- **verificationgatekeeper.bypass.cratehack** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanHackCrate*
+- **verificationgatekeeper.bypass.cupboardactions** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnCupboardAuthorize, OnCupboardClearList, OnCupboardDeauthorize*
+- **verificationgatekeeper.bypass.customui** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanUseUI*
+- **verificationgatekeeper.bypass.demolish** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanDemolish, OnStructureDemolish*
+- **verificationgatekeeper.bypass.deployitem** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanDeployItem*
+- **verificationgatekeeper.bypass.dooractions** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnDoorClosed, OnDoorOpened*
+- **verificationgatekeeper.bypass.elevatoractions** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnElevatorButtonPress*
+- **verificationgatekeeper.bypass.entitylooting** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanLootEntity*
+- **verificationgatekeeper.bypass.entitypickup** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanPickupEntity*
+- **verificationgatekeeper.bypass.explosives** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnExplosiveDropped, OnExplosiveThrown*
+- **verificationgatekeeper.bypass.flamers** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnFlameThrowerBurn*
+- **verificationgatekeeper.bypass.fuelactions** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanCheckFuel*
+- **verificationgatekeeper.bypass.growablegathering** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnGrowableGather*
+- **verificationgatekeeper.bypass.healingitemusage** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnHealingItemUse*
+- **verificationgatekeeper.bypass.helicopteractions** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanUseHelicopter*
+- **verificationgatekeeper.bypass.itemactions** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnItemAction*
+- **verificationgatekeeper.bypass.itemdropping** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanDropActiveItem*
+- **verificationgatekeeper.bypass.itemmoving** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanAcceptItem, CanMoveItem*
+- **verificationgatekeeper.bypass.itempickup** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnItemPickup*
+- **verificationgatekeeper.bypass.itemstacking** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanStackItem*
+- **verificationgatekeeper.bypass.itemwearing** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanWearItem*
+- **verificationgatekeeper.bypass.liftactions** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnLiftUse*
+- **verificationgatekeeper.bypass.lockactions** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanChangeCode, CanLock, CanPickupLock, CanUnlock, CanUseLockedEntity, OnCodeEntered, OnItemLock, OnItemUnlock*
+- **verificationgatekeeper.bypass.mailboxactions** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanUseMailbox*
+- **verificationgatekeeper.bypass.melee** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnMeleeAttack, OnMeleeThrown*
+- **verificationgatekeeper.bypass.ovenactions** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnOvenToggle*
+- **verificationgatekeeper.bypass.phoneactions** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnPhoneDial, OnPhoneCallStart, OnPhoneNameUpdate*
+- **verificationgatekeeper.bypass.playerassist** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnPlayerAssist, OnPlayerRevive*
+- **verificationgatekeeper.bypass.playerlooting** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanLootPlayer*
+- **verificationgatekeeper.bypass.push** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanPushBoat, OnVehiclePush*
+- **verificationgatekeeper.bypass.recycleractions** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnRecyclerToggle*
+- **verificationgatekeeper.bypass.reloading** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnReloadMagazine, OnReloadWeapon, OnSwitchAmmo*
+- **verificationgatekeeper.bypass.repair** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnHammerHit, OnStructureRepair*
+- **verificationgatekeeper.bypass.research** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanResearchItem, CanUnlockTechTreeNode, CanUnlockTechTreeNodePath*
+- **verificationgatekeeper.bypass.rockets** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnRocketLaunched*
+- **verificationgatekeeper.bypass.shopactions** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnShopCompleteTrade*
+- **verificationgatekeeper.bypass.signupdate** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanUpdateSign*
+- **verificationgatekeeper.bypass.stashactions** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanHideStash, CanSeeStash*
+- **verificationgatekeeper.bypass.structurerotate** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnStructureRotate*
+- **verificationgatekeeper.bypass.switchactions** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnSwitchToggle*
+- **verificationgatekeeper.bypass.teamcreation** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnTeamCreate*
+- **verificationgatekeeper.bypass.trapactions** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnTrapArm, OnTrapDisarm*
+- **verificationgatekeeper.bypass.turretactions** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnTurretAuthorize, OnTurretClearList, OnTurretRotate*
+- **verificationgatekeeper.bypass.upgrade** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanAffordUpgrade, CanChangeGrade, OnStructureUpgrade*
+- **verificationgatekeeper.bypass.vendingadmin** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanAdministerVending, OnRotateVendingMachine*
+- **verificationgatekeeper.bypass.vendingusage** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanUseVending, OnBuyVendingItem, OnVendingTransaction*
+- **verificationgatekeeper.bypass.weaponfiring** -- Players and groups with this permission bypass the restrictions on the following hooks: *OnWeaponFired*
+- **verificationgatekeeper.bypass.wiring** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanUseWires*
+- **verificationgatekeeper.bypass.woodcutting** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanTakeCutting*
+- **verificationgatekeeper.bypass.worldprojectiles** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanCreateWorldProjectile, OnCreateWorldProjectile*
+- **verificationgatekeeper.bypass.wounded** -- Players and groups with this permission bypass the restrictions on the following hooks: *CanBeWounded*
 
 
 ## Configuration
@@ -34,7 +97,7 @@ Keep in mind that this plugin will disable every possible action a player can pe
 - **Prevent Entity Pickup** -- (true/false) Prevents players from picking up an entity. Hooks: *CanPickupEntity*
 - **Prevent Explosives** -- (true/false) Prevents explosives from being dropped/thrown. Hooks: *OnExplosiveDropped, OnExplosiveThrown*
 - **Prevent Flamers** -- (true/false) Prevents the use/spread of flamers. Hooks: *OnFlameThrowerBurn*
-- **Prevent Fuel Actions** -- (true/false) Prevents interaction with fuel storages. Hooks: *anCheckFuel*
+- **Prevent Fuel Actions** -- (true/false) Prevents interaction with fuel storages. Hooks: *CanCheckFuel*
 - **Prevent Growable Gathering** -- (true/false) Prevents players from gathering growables. Hooks: *OnGrowableGather*
 - **Prevent Healing Item Usage** -- (true/false) Prevents players from healing themselves. Hooks: *OnHealingItemUse*
 - **Prevent Helicopter Actions** -- (true/false) Prevents players from using helicopters. Hooks: *CanUseHelicopter*
