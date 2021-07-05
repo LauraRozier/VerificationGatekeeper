@@ -32,7 +32,7 @@ using Oxide.Core.Libraries.Covalence;
 
 namespace Oxide.Plugins
 {
-    [Info("Verification Gatekeeper", "ThibmoRozier", "1.1.0")]
+    [Info("Verification Gatekeeper", "ThibmoRozier", "1.2.0")]
     [Description("Prevents players from doing anything on the server until they are given the bypass permission.")]
     public class VerificationGatekeeper : RustPlugin
     {
@@ -66,6 +66,7 @@ namespace Oxide.Plugins
         private const string CPermBypassItemDropping = "verificationgatekeeper.bypass.itemdropping";
         private const string CPermBypassItemMoving = "verificationgatekeeper.bypass.itemmoving";
         private const string CPermBypassItemPickup = "verificationgatekeeper.bypass.itempickup";
+        private const string CPermBypassItemSkinning = "verificationgatekeeper.bypass.itemskinning";
         private const string CPermBypassItemStacking = "verificationgatekeeper.bypass.itemstacking";
         private const string CPermBypassItemWearing = "verificationgatekeeper.bypass.itemwearing";
         private const string CPermBypassLiftActions = "verificationgatekeeper.bypass.liftactions";
@@ -168,6 +169,8 @@ namespace Oxide.Plugins
             public bool PreventItemMoving = true;
             [JsonProperty("Prevent Item Pickup", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
             public bool PreventItemPickup = true;
+            [JsonProperty("Prevent Item Skinning", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
+            public bool PreventItemSkinning = true;
             [JsonProperty("Prevent Item Stacking", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
             public bool PreventItemStacking = true;
             [JsonProperty("Prevent Item Wearing", DefaultValueHandling = DefaultValueHandling.Populate), DefaultValue(true)]
@@ -336,11 +339,8 @@ namespace Oxide.Plugins
                 permission.RegisterPermission(CPermBypassCounterActions, this);
             }
 
-            if (!FConfigData.PreventCrafting) {
-                Unsubscribe(nameof(CanCraft));
-            } else {
+            if (FConfigData.PreventCrafting)
                 permission.RegisterPermission(CPermBypassCrafting, this);
-            }
 
             if (!FConfigData.PreventCrateHack) {
                 Unsubscribe(nameof(CanHackCrate));
@@ -460,6 +460,12 @@ namespace Oxide.Plugins
                 Unsubscribe(nameof(OnItemPickup));
             } else {
                 permission.RegisterPermission(CPermBypassItemPickup, this);
+            }
+
+            if (!FConfigData.PreventItemSkinning) {
+                Unsubscribe(nameof(OnItemSkinChange));
+            } else {
+                permission.RegisterPermission(CPermBypassItemSkinning, this);
             }
 
             if (!FConfigData.PreventItemStacking) {
@@ -680,6 +686,9 @@ namespace Oxide.Plugins
             } else {
                 permission.RegisterPermission(CPermBypassWounded, this);
             }
+
+            if (!(FConfigData.PreventCrafting || FConfigData.PreventItemSkinning))
+                Unsubscribe(nameof(CanCraft));
         }
 
         // PreventMount
@@ -735,10 +744,23 @@ namespace Oxide.Plugins
 
 
         // PreventCrafting
-        bool? CanCraft(ItemCrafter aItemCrafter, ItemBlueprint aBp, int aAmount) => CheckAndReturnNullOrFalse(aItemCrafter.baseEntity, CPermBypassCrafting);
+        bool? CanCraft(ItemCrafter aItemCrafter, ItemBlueprint aBp, int aAmount) =>
+            FConfigData.PreventCrafting
+                ? CheckAndReturnNullOrFalse(aItemCrafter.baseEntity, CPermBypassCrafting)
+                : null;
 
-        bool? CanCraft(PlayerBlueprints aPlayerBlueprints, ItemDefinition aItemDefinition, int aSkinItemId) =>
-            CheckAndReturnNullOrFalse(aPlayerBlueprints.baseEntity, CPermBypassCrafting);
+        bool? CanCraft(PlayerBlueprints aPlayerBlueprints, ItemDefinition aItemDefinition, int aSkinItemId)
+        {
+            bool? result = null;
+
+            if (FConfigData.PreventCrafting)
+                result = CheckAndReturnNullOrFalse(aPlayerBlueprints.baseEntity, CPermBypassCrafting);
+
+            if (result == null && FConfigData.PreventCrafting && aSkinItemId != 0)
+                result = CheckAndReturnNullOrFalse(aPlayerBlueprints.baseEntity, CPermBypassItemSkinning);
+
+            return result;
+        }
 
 
         // PreventCrateHack
@@ -878,6 +900,11 @@ namespace Oxide.Plugins
 
         // PreventItemPickup
         bool? OnItemPickup(Item aItem, BasePlayer aPlayer) => CheckAndReturnNullOrFalse(aPlayer, CPermBypassItemPickup);
+
+
+        // PreventItemSkinning
+        bool? OnItemSkinChange(int aSkinItemId, Item aItem, StorageContainer aContainer, BasePlayer aPlayer) =>
+            CheckAndReturnNullOrFalse(aPlayer, CPermBypassItemSkinning);
 
 
         // PreventItemStacking
